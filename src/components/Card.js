@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableWithoutFeedback } from 'react-native';
 import styled from 'styled-components/native';
 
 const TVEventHandler = require('TVEventHandler');
@@ -24,7 +24,7 @@ class Card extends Component {
  }
 render() {
     return (
-      <TouchableHighlight onFocus={this.onFocus} onLongPress={this.onFocus} onBlur={this.onFocus}>
+      <TouchableWithoutFeedback  onFocus={this.onFocus} onLongPress={this.onFocus} onBlur={this.onFocus}>
         <StyledView active={this.state.active}>
           <Text>
             hello
@@ -35,7 +35,7 @@ render() {
             cvhxvchvx
           </Text>
         </StyledView>
-      </TouchableHighlight>
+      </TouchableWithoutFeedback>
     );
   }
 }
