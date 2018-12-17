@@ -21,6 +21,10 @@ const Columns = styled.View`
 export default class Dashboard extends Component {
   _tvEventHandler;
 
+  static navigationOptions = {
+    title: 'Welcome',
+  };
+
   componentDidMount() {
     this.enableTVEventHandler();
   }

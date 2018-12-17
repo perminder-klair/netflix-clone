@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
+import { Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
 const Container = styled.View`
@@ -15,6 +16,10 @@ const Title = styled.Text`
 `;
 
 class VideoView extends Component {
+  static navigationOptions = {
+    title: 'Video view',
+  };
+
   render() {
     const { navigation } = this.props;
     const item = navigation.getParam('item');

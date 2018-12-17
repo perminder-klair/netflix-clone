@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {createStackNavigator} from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import Dashboard from './screens/Dashboard';
 import VideoView from './screens/VideoView';
@@ -9,10 +9,13 @@ const MainStack = createStackNavigator({
   Video: {screen: VideoView},
 });
 
-class App extends Component {
-  render() {
-    return <MainStack />;
-  }
-}
-
+const App = createAppContainer(MainStack);
 export default App;
+
+// class App extends Component {
+//   render() {
+//     return <MainStack />;
+//   }
+// }
+
+// export default App;
