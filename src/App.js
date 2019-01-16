@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import Dashboard from './screens/Dashboard';
 import VideoView from './screens/VideoView';
 
 const MainStack = createStackNavigator({
-  Dashboard: {screen: Dashboard},
-  Video: {screen: VideoView},
+  Dashboard: { screen: Dashboard },
+  Video: { screen: VideoView },
 });
 
 const App = createAppContainer(MainStack);

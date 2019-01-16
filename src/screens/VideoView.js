@@ -28,9 +28,14 @@ class VideoView extends Component {
       <Container>
         <Image
           source={{ uri: item.Poster }}
-          style={{ width: 150, height: 225 }} />
+          style={{ width: 150, height: 225 }}
+        />
         <Title>
-          {item.Title} - ({item.Year})
+          {item.Title}
+
+- (
+          {item.Year}
+)
         </Title>
       </Container>
     );
