@@ -17,6 +17,9 @@ const ImageStyled = styled(Image)`
 `;
 
 const Overlay = styled.View`
+  border-style: solid;
+  border-color: rgba(255,255,255,0.8);
+  border-width: 1;
   position: absolute;
   background-color: rgba(0,0,0,0.8);
   bottom: 0;

@@ -26,7 +26,8 @@ const CardsWrapper = styled.View`
 const Columns = styled.View`
   display: flex;
   flex-direction: row;
-  margin-vertical: 8;
+  margin-top: 25;
+  margin-bottom: 8;
   margin-horizontal: 8;
 `;
 
@@ -35,6 +36,8 @@ const HeadingStyled = styled(Text)`
   color: #fff;
   font-size: 18;
 `;
+
+
 export default class Dashboard extends Component {
   static navigationOptions = {
     title: 'CLIPBUCKET',
@@ -91,7 +94,7 @@ export default class Dashboard extends Component {
               <Columns>
                 <HeadingStyled>Recent Videos</HeadingStyled>
               </Columns>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
                 {hollywood.map(item => (
                   <Card key={item.imdbID} item={item} />
                 ))}
@@ -100,7 +103,7 @@ export default class Dashboard extends Component {
               <Columns>
                 <HeadingStyled>Most Viewed Videos</HeadingStyled>
               </Columns>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
                 {bollywood.map(item => (
                   <Card key={item.imdbID} item={item} />
                 ))}
@@ -109,7 +112,7 @@ export default class Dashboard extends Component {
               <Columns>
                 <HeadingStyled>Playlists</HeadingStyled>
               </Columns>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
                 {punjabi.map(item => (
                   <Card key={item.imdbID} item={item} />
                 ))}
