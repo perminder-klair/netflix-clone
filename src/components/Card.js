@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableWithoutFeedback, Image } from 'react-native';
+import { TouchableWithoutFeedback, Image, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { withNavigation } from 'react-navigation';
 
@@ -9,7 +9,6 @@ const Container = styled.View`
   height: ${props => (props.active ? '200' : '100')};
   margin-vertical: 8;
   margin-horizontal: 3;
-
 `;
 
 const ImageStyled = styled(Image)`
@@ -19,21 +18,54 @@ const ImageStyled = styled(Image)`
 
 const Overlay = styled.View`
   position: absolute;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.8);
   bottom: 0;
   width: 100%;
   height: 100%;
   display: none;
 `;
 
-const Title = styled.Text`
-  text-align: center;
-  margin-top: 5;
-  margin-bottom: 5;
-  font-size: 14;
-  color: #fff;
+const VideoDetails = styled.View`
+  height: 50%;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding-horizontal: 10
 `;
 
+
+const Title = styled.Text`
+  font-size: 22;
+  color: #fff;
+  font-weight: bold;
+`;
+const UploadTime = styled.Text`
+  font-size: 14;
+  color: rgba(255,255,255,0.8);
+`;
+const VideoStats = styled.View`
+  flex-direction: row;
+  position: absolute;
+  bottom: 5;
+  width: 100%;
+  padding-horizontal: 10;
+`;
+const PublicStatsContainer = styled.View`
+
+flex-direction: row;
+flex-grow: 1;
+align-items: center;
+`;
+
+const StatText = styled.Text`
+  font-size: 12;
+  color: rgba(255,255,255,0.8);
+  margin-right: 5;
+`;
+const Time = styled.Text`
+  font-size: 16;
+  color: #ffffff
+  `;
 class Card extends Component {
   constructor() {
     super();
@@ -60,22 +92,33 @@ class Card extends Component {
         onBlur={this.onBlur}
         onPress={() => navigation.navigate('Video', { item })}
       >
-        <Container active={this.state.active}>
+        <Container active={active}>
           <ImageStyled
             source={{ uri: item.Poster }}
-            active={this.state.active}
+            active={active}
           />
           { active && (
-          <Overlay active={this.state.active}>
+          <Overlay active={active}>
+            <VideoDetails>
 
-            <Title>
-              {item.Title}
+              <Title>
+                {item.Title}
+              </Title>
+              <UploadTime>
+                9 months ago
+              </UploadTime>
 
-- (
-              {item.Year}
-)
-            </Title>
+            </VideoDetails>
+            <VideoStats>
+              <PublicStatsContainer>
+                <StatText>1 like</StatText>
+                <StatText>1 comment</StatText>
+                <StatText>2 views</StatText>
+              </PublicStatsContainer>
 
+              <Time>1h 30min</Time>
+
+            </VideoStats>
           </Overlay>
           )}
 
