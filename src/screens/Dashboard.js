@@ -15,7 +15,12 @@ const Container = styled.View`
 
 const Wrapper = styled.View`
   background-color: #004f93;
-  margin-top: 50;
+
+`;
+
+const CardsWrapper = styled.View`
+  margin-top: 10;
+  margin-horizontal: 20;
 `;
 
 const Columns = styled.View`
@@ -28,7 +33,7 @@ const Columns = styled.View`
 
 const HeadingStyled = styled(Text)`
   color: #fff;
-  font-size: 20;
+  font-size: 18;
 `;
 export default class Dashboard extends Component {
   static navigationOptions = {
@@ -82,32 +87,34 @@ export default class Dashboard extends Component {
         <ScrollView>
           <HeroArea />
           <Wrapper>
-            <Columns>
-              <HeadingStyled>Recent Videos</HeadingStyled>
-            </Columns>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              {hollywood.map(item => (
-                <Card key={item.imdbID} item={item} />
-              ))}
-            </ScrollView>
+            <CardsWrapper>
+              <Columns>
+                <HeadingStyled>Recent Videos</HeadingStyled>
+              </Columns>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {hollywood.map(item => (
+                  <Card key={item.imdbID} item={item} />
+                ))}
+              </ScrollView>
 
-            <Columns>
-              <HeadingStyled>Most Viewed Videos</HeadingStyled>
-            </Columns>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              {bollywood.map(item => (
-                <Card key={item.imdbID} item={item} />
-              ))}
-            </ScrollView>
+              <Columns>
+                <HeadingStyled>Most Viewed Videos</HeadingStyled>
+              </Columns>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {bollywood.map(item => (
+                  <Card key={item.imdbID} item={item} />
+                ))}
+              </ScrollView>
 
-            <Columns>
-              <HeadingStyled>Playlists</HeadingStyled>
-            </Columns>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-              {punjabi.map(item => (
-                <Card key={item.imdbID} item={item} />
-              ))}
-            </ScrollView>
+              <Columns>
+                <HeadingStyled>Playlists</HeadingStyled>
+              </Columns>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {punjabi.map(item => (
+                  <Card key={item.imdbID} item={item} />
+                ))}
+              </ScrollView>
+            </CardsWrapper>
 
           </Wrapper>
         </ScrollView>

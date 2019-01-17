@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Dimensions, Image } from 'react-native';
 
-const deviceHeight = Dimensions.get('window').height / 2;
+const deviceHeight = Dimensions.get('window').height / 1.75;
 const featuredImage = require('../assets/large-poster.png');
 
 const Container = styled.View`
