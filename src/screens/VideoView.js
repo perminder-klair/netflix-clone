@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import styled from 'styled-components/native';
 import { Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import FeaturedVideo from '../components/FeaturedVideo';
+
+const featuredImage = require('../assets/large-poster.png');
 
 const Container = styled.View`
-  background-color: #ffffff;
-  margin-top: 50;
+  background-color: #004f93;
+
 `;
 
 const Title = styled.Text`
@@ -18,6 +21,9 @@ const Title = styled.Text`
 class VideoView extends Component {
   static navigationOptions = {
     title: 'Video view',
+    headerStyle: {
+      display: 'none'
+    }
   };
 
   render() {
@@ -26,17 +32,14 @@ class VideoView extends Component {
 
     return (
       <Container>
-        <Image
-          source={{ uri: item.Poster }}
-          style={{ width: 150, height: 225 }}
-        />
-        <Title>
-          {item.Title}
+        <FeaturedVideo />
+        {/*
+        {item.Title}
 
 - (
-          {item.Year}
+        {item.Year}
 )
-        </Title>
+*/}
       </Container>
     );
   }
