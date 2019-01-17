@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Text, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
+import HeroArea from '../components/HeroArea';
 import { bollywood, hollywood, punjabi } from '../utils/api';
 import Card from '../components/Card';
+
 
 const TVEventHandler = require('TVEventHandler');
 
@@ -78,6 +80,7 @@ export default class Dashboard extends Component {
     return (
       <Container>
         <ScrollView>
+          <HeroArea />
           <Wrapper>
             <Columns>
               <HeadingStyled>Recent Videos</HeadingStyled>

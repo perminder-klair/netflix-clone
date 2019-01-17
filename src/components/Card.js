@@ -4,8 +4,8 @@ import styled from 'styled-components/native';
 import { withNavigation } from 'react-navigation';
 
 const Container = styled.View`
-  background-color: ${props => (props.active ? 'red' : 'transparent')};
-  border-color: ${props => (props.active ? 'red' : 'transparent')};
+  background-color: ${props => (props.active ? '#fff' : 'transparent')};
+  border-color: ${props => (props.active ? '#fff' : 'transparent')};
   border-width: 2;
   width: 180;
   height: 100;
