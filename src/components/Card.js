@@ -5,21 +5,34 @@ import { withNavigation } from 'react-navigation';
 
 const Container = styled.View`
   background-color: ${props => (props.active ? '#fff' : 'transparent')};
-  border-color: ${props => (props.active ? '#fff' : 'transparent')};
-  border-width: 2;
-  width: 180;
-  height: 100;
+  width: ${props => (props.active ? '300' : '180')};
+  height: ${props => (props.active ? '200' : '100')};
   margin-vertical: 8;
   margin-horizontal: 3;
-  margin-bottom: 20;
+
 `;
 
-// const Title = styled.Text`
-//   text-align: center;
-//   margin-top: 5;
-//   margin-bottom: 5;
-//   font-size: 14;
-// `;
+const ImageStyled = styled(Image)`
+  width: ${props => (props.active ? '300' : '180')};
+  height: ${props => (props.active ? '200' : '100')};
+`;
+
+const Overlay = styled.View`
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+`;
+
+const Title = styled.Text`
+  text-align: center;
+  margin-top: 5;
+  margin-bottom: 5;
+  font-size: 14;
+  color: #fff;
+`;
 
 class Card extends Component {
   constructor() {
@@ -29,31 +42,43 @@ class Card extends Component {
     };
   }
 
+
   onFocus = () => {
-    this.setState({ active: !this.state.active });
+    this.setState({ active: true });
+  }
+
+  onBlur = () => {
+    this.setState({ active: false });
   }
 
   render() {
     const { item, navigation } = this.props;
-
+    const { active } = this.state;
     return (
       <TouchableWithoutFeedback
         onFocus={this.onFocus}
-        onBlur={this.onFocus}
+        onBlur={this.onBlur}
         onPress={() => navigation.navigate('Video', { item })}
       >
         <Container active={this.state.active}>
-          <Image
+          <ImageStyled
             source={{ uri: item.Poster }}
-            style={{ width: 180, height: 100 }}
+            active={this.state.active}
           />
-          {/*   <Title>
-            {item.Title}
+          { active && (
+          <Overlay active={this.state.active}>
+
+            <Title>
+              {item.Title}
 
 - (
-            {item.Year}
+              {item.Year}
 )
-          </Title> */}
+            </Title>
+
+          </Overlay>
+          )}
+
         </Container>
       </TouchableWithoutFeedback>
     );

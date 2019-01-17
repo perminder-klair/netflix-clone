@@ -25,14 +25,12 @@ const Columns = styled.View`
   margin-horizontal: 8;
 `;
 
+
 const HeadingStyled = styled(Text)`
   color: #fff;
   font-size: 20;
 `;
-
 export default class Dashboard extends Component {
-  _tvEventHandler;
-
   static navigationOptions = {
     title: 'CLIPBUCKET',
     headerStyle: {
@@ -51,6 +49,8 @@ export default class Dashboard extends Component {
   componentWillUnmount() {
     this.disableTVEventHandler();
   }
+
+  _tvEventHandler;
 
   enableTVEventHandler() {
     this._tvEventHandler = new TVEventHandler();
