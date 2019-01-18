@@ -7,8 +7,6 @@ import VideoView from './screens/VideoView';
 const MainStack = createStackNavigator({
   Video: { screen: VideoView },
   Dashboard: { screen: Dashboard },
-
-
 });
 
 const App = createAppContainer(MainStack);

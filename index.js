@@ -1,7 +1,16 @@
 /** @format */
+import React from 'react';
+import { AppRegistry } from 'react-native';
+import { ThemeProvider } from 'styled-components';
 
-import {AppRegistry} from 'react-native';
 import App from './src/App';
-import {name as appName} from './app.json';
+import { name as appName } from './app.json';
+import theme from './src/utils/theme';
 
-AppRegistry.registerComponent(appName, () => App);
+const Index = () => (
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>
+);
+
+AppRegistry.registerComponent(appName, () => Index);
