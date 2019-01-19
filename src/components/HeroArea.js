@@ -6,7 +6,7 @@ const deviceHeight = Dimensions.get('window').height / 1.75;
 const featuredImage = require('../assets/large-poster.png');
 
 const Container = styled.View`
-background-color: #004f93;
+background-color: ${props => props.theme.primaryColor};
 height: ${deviceHeight};
 `;
 

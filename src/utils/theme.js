@@ -13,7 +13,7 @@ const theme = {
   // fontSizeExtraSmall: 12,
   // fontSizeMedium: 18,
   // fontSizeLarge: 22,
-  // textColor: '#0A0B11',
+  textColor: '#fff',
   // textColorInverse: '#E5EBE9',
   // textColorLite: '#8C8787',
   // inactiveTintColor: '#505362',

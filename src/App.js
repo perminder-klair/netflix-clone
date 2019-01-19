@@ -5,8 +5,8 @@ import Dashboard from './screens/Dashboard';
 import VideoView from './screens/VideoView';
 
 const MainStack = createStackNavigator({
-  Video: { screen: VideoView },
   Dashboard: { screen: Dashboard },
+  Video: { screen: VideoView },
 });
 
 const App = createAppContainer(MainStack);

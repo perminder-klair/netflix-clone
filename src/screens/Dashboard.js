@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
 import HeroArea from '../components/HeroArea';
@@ -7,14 +7,15 @@ import { bollywood, hollywood, punjabi } from '../utils/api';
 import Card from '../components/Card';
 
 
+// eslint-disable-next-line import/no-unresolved
 const TVEventHandler = require('TVEventHandler');
 
 const Container = styled.View`
-  background-color: #004f93;
+  background-color: ${props => props.theme.primaryColor};
 `;
 
 const Wrapper = styled.View`
-  background-color: #004f93;
+  background-color: ${props => props.theme.primaryColor};
 
 `;
 
@@ -32,7 +33,7 @@ const Columns = styled.View`
 `;
 
 
-const HeadingStyled = styled(Text)`
+const HeadingStyled = styled.Text`
   color: #fff;
   font-size: 18;
 `;
@@ -61,7 +62,9 @@ export default class Dashboard extends Component {
   _tvEventHandler;
 
   enableTVEventHandler() {
+    // eslint-disable-next-line no-underscore-dangle
     this._tvEventHandler = new TVEventHandler();
+    // eslint-disable-next-line no-underscore-dangle
     this._tvEventHandler.enable(this, (cmp, evt) => {
       if (evt && evt.eventType === 'right') {
         console.log('right');
@@ -77,9 +80,9 @@ export default class Dashboard extends Component {
     });
   }
 
-  disableTVEventHandler() {
-    if (this._tvEventHandler) {
-      this._tvEventHandler.disable();
+  disableTVEventHandler() { // eslint-disable-next-line no-underscore-dangle
+    if (this._tvEventHandler) { // eslint-disable-next-line no-underscore-dangle
+      this._tvEventHandler.disable(); // eslint-disable-next-line no-underscore-dangle
       delete this._tvEventHandler;
     }
   }

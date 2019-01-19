@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { TouchableWithoutFeedback, Image } from 'react-native';
+import {
+  TouchableWithoutFeedback, Image, Dimensions
+} from 'react-native';
 import styled from 'styled-components/native';
 import { withNavigation } from 'react-navigation';
+
+
+const deviceWidth = Dimensions.get('window').width / 3.2;
 
 const Container = styled.View`
   background-color: ${props => (props.active ? '#fff' : 'transparent')};
   width: ${props => (props.active ? '300' : '180')};
   height: ${props => (props.active ? '200' : '100')};
   margin-vertical: 8;
-  margin-horizontal: 3;
+  margin-horizontal: 2;
 `;
 
 const ImageStyled = styled(Image)`
@@ -33,7 +38,7 @@ const VideoDetails = styled.View`
   position: absolute;
   width: 100%;
   bottom: 0;
-  padding-horizontal: 10
+  padding-horizontal: 10;
 `;
 
 
@@ -42,10 +47,12 @@ const Title = styled.Text`
   color: #fff;
   font-weight: bold;
 `;
+
 const UploadTime = styled.Text`
   font-size: 14;
   color: rgba(255,255,255,0.8);
 `;
+
 const VideoStats = styled.View`
   flex-direction: row;
   position: absolute;
@@ -67,8 +74,23 @@ const StatText = styled.Text`
 `;
 const Time = styled.Text`
   font-size: 16;
-  color: #ffffff
+  color: #ffffff;
   `;
+
+const ContainerSecondary = styled.View`
+  flex: 1;
+  flex-grow: 1;
+  background-color: ${props => (props.active ? '#fff' : 'red')};
+  width: ${props => (props.active ? '400' : deviceWidth)};
+  height: ${props => (props.active ? '200' : '150')};
+  margin-vertical: 8;
+  margin-horizontal: 5;
+`;
+
+const ImageStyledSecondary = styled(Image)`
+  width: ${props => (props.active ? '100%' : '100%')};
+  height: ${props => (props.active ? '100%' : '100%')};
+`;
 class Card extends Component {
   constructor() {
     super();
@@ -76,7 +98,6 @@ class Card extends Component {
       active: false
     };
   }
-
 
   onFocus = () => {
     this.setState({ active: true });
@@ -87,16 +108,58 @@ class Card extends Component {
   }
 
   render() {
-    const { item, navigation } = this.props;
+    const { item, navigation, type } = this.props;
     const { active } = this.state;
+    if (type !== 'secondary') {
+      return (
+        <TouchableWithoutFeedback
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onPress={() => navigation.navigate('Video', { item })}
+        >
+          <Container active={active}>
+            <ImageStyled
+              source={{ uri: item.Poster }}
+              active={active}
+            />
+            { active && (
+            <Overlay active={active}>
+              <VideoDetails>
+
+                <Title>
+                  {item.Title}
+                </Title>
+                <UploadTime>
+                  {item.Year}
+                </UploadTime>
+
+              </VideoDetails>
+              <VideoStats>
+                <PublicStatsContainer>
+                  <StatText>1 like</StatText>
+                  <StatText>1 comment</StatText>
+                  <StatText>2 views</StatText>
+                </PublicStatsContainer>
+
+                <Time>1h 30min</Time>
+
+              </VideoStats>
+            </Overlay>
+            )}
+
+          </Container>
+        </TouchableWithoutFeedback>
+      );
+    }
+
     return (
       <TouchableWithoutFeedback
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         onPress={() => navigation.navigate('Video', { item })}
       >
-        <Container active={active}>
-          <ImageStyled
+        <ContainerSecondary active={active}>
+          <ImageStyledSecondary
             source={{ uri: item.Poster }}
             active={active}
           />
@@ -108,7 +171,7 @@ class Card extends Component {
                 {item.Title}
               </Title>
               <UploadTime>
-                9 months ago
+                {item.Year}
               </UploadTime>
 
             </VideoDetails>
@@ -125,7 +188,7 @@ class Card extends Component {
           </Overlay>
           )}
 
-        </Container>
+        </ContainerSecondary>
       </TouchableWithoutFeedback>
     );
   }
