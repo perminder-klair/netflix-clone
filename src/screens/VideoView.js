@@ -13,13 +13,6 @@ const Container = styled.View`
   background-color: ${props => props.theme.primaryColor};
 `;
 
-// const Title = styled.Text`
-//   text-align: center;
-//   margin-top: 5;
-//   margin-bottom: 5;
-//   font-size: 14;
-// `;
-
 class VideoView extends Component {
   static navigationOptions = {
     title: 'Video view',

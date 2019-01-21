@@ -6,7 +6,6 @@ import HeroArea from '../components/HeroArea';
 import { bollywood, hollywood, punjabi } from '../utils/api';
 import Card from '../components/Card';
 
-
 // eslint-disable-next-line import/no-unresolved
 const TVEventHandler = require('TVEventHandler');
 
@@ -16,7 +15,6 @@ const Container = styled.View`
 
 const Wrapper = styled.View`
   background-color: ${props => props.theme.primaryColor};
-
 `;
 
 const CardsWrapper = styled.View`
@@ -32,13 +30,10 @@ const Columns = styled.View`
   margin-horizontal: 8;
 `;
 
-
 const HeadingStyled = styled.Text`
   color: #fff;
   font-size: 18;
 `;
-
-
 export default class Dashboard extends Component {
   static navigationOptions = {
     title: 'CLIPBUCKET',
