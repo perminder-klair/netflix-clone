@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import HeroArea from '../components/HeroArea';
 import { bollywood, hollywood, punjabi } from '../utils/api';
 import Card from '../components/Card';
-
+import Header from '../components/Header';
 // eslint-disable-next-line import/no-unresolved
 const TVEventHandler = require('TVEventHandler');
 
@@ -34,16 +34,12 @@ const HeadingStyled = styled.Text`
   color: #fff;
   font-size: 18;
 `;
+
+
 export default class Dashboard extends Component {
   static navigationOptions = {
-    title: 'CLIPBUCKET',
-    headerStyle: {
-      backgroundColor: '#000',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+    header: null
+
   };
 
   componentDidMount() {
@@ -85,7 +81,9 @@ export default class Dashboard extends Component {
   render() {
     return (
       <Container>
+
         <ScrollView>
+          <Header />
           <HeroArea />
           <Wrapper>
             <CardsWrapper>
