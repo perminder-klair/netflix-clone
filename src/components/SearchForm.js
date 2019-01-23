@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TextInput, Image } from 'react-native';
+import theme from '../utils/theme';
 
 const searchIcon = require('../assets/search-icon.png');
 
@@ -15,13 +16,13 @@ const Container = styled.View`
 
 const TextInputStyled = styled(TextInput)`
   height: 40;
-  color: #fff;
+  color: ${props => props.theme.textColor};
 `;
 
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: 'Search' };
+    this.state = { text: '' };
   }
 
   render() {
@@ -32,8 +33,10 @@ class SearchForm extends React.Component {
           style={{
 
           }}
-          onChangeText={text => this.setState({ text })}
+          onChangeText={value => this.setState({ text: value })}
           value={text}
+          placeholder="Search"
+          placeholderTextColor={theme.textColor}
         />
         <Image
           source={searchIcon}

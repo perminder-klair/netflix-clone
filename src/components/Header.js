@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TextInput, Image } from 'react-native';
+import { Image } from 'react-native';
 import SearchForm from './SearchForm';
 
 const avatar = require('../assets/avatar.png');
@@ -19,7 +19,6 @@ const Container = styled.View`
 `;
 
 const Logo = styled.TouchableOpacity`
-
 `;
 
 const Navigation = styled.View`
@@ -34,14 +33,10 @@ const NavItem = styled.TouchableOpacity`
 const TextStyled = styled.Text`
   font-size: 18;
   font-weight: 300;
-  color: #fff;
+  color: ${props => props.theme.textColor};
 `;
 
 const Right = styled.View``;
-
-const SearchIcon = styled.TouchableOpacity`
-
-`;
 
 const Profile = styled.TouchableOpacity`
   margin-horizontal: 15;

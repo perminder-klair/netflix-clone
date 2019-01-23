@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ScrollView, Dimensions } from 'react-native';
-import Card from './Card';
+import VideoItem from './VideoItem';
 
 import { hollywood } from '../utils/api';
 
-const deviceWidth = Dimensions.get('window').width / 3;
 // const featuredImage = require('../assets/large-poster.png');
 
 const Container = styled.View`
@@ -33,7 +32,7 @@ export default () => (
     </Columns>
     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
       {hollywood.map(item => (
-        <Card key={item.imdbID} item={item} type="secondary" />
+        <VideoItem key={item.imdbID} item={item} type="secondary" />
       ))}
     </ScrollView>
   </Container>

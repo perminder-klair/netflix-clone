@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 import HeroArea from '../components/HeroArea';
 import { bollywood, hollywood, punjabi } from '../utils/api';
-import Card from '../components/Card';
+import VideoItem from '../components/VideoItem';
 import Header from '../components/Header';
 // eslint-disable-next-line import/no-unresolved
 const TVEventHandler = require('TVEventHandler');
@@ -92,7 +92,7 @@ export default class Dashboard extends Component {
               </Columns>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
                 {hollywood.map(item => (
-                  <Card key={item.imdbID} item={item} />
+                  <VideoItem key={item.imdbID} item={item} />
                 ))}
               </ScrollView>
 
@@ -101,7 +101,7 @@ export default class Dashboard extends Component {
               </Columns>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
                 {bollywood.map(item => (
-                  <Card key={item.imdbID} item={item} />
+                  <VideoItem key={item.imdbID} item={item} />
                 ))}
               </ScrollView>
 
@@ -110,7 +110,7 @@ export default class Dashboard extends Component {
               </Columns>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
                 {punjabi.map(item => (
-                  <Card key={item.imdbID} item={item} />
+                  <VideoItem key={item.imdbID} item={item} />
                 ))}
               </ScrollView>
             </CardsWrapper>

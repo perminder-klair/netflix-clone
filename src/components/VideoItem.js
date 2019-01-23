@@ -91,7 +91,7 @@ const ImageStyledSecondary = styled(Image)`
   width: ${props => (props.active ? '100%' : '100%')};
   height: ${props => (props.active ? '100%' : '100%')};
 `;
-class Card extends Component {
+class VideoItem extends Component {
   constructor() {
     super();
     this.state = {
@@ -194,4 +194,4 @@ class Card extends Component {
   }
 }
 
-export default withNavigation(Card);
+export default withNavigation(VideoItem);
