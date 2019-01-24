@@ -7,10 +7,10 @@ import Login from './screens/Login';
 import Search from './screens/Search';
 
 const MainStack = createStackNavigator({
-  Search: { screen: Search },
   Dashboard: { screen: Dashboard },
   Video: { screen: VideoView },
   Login: { screen: Login },
+  Search: { screen: Search },
 
 });
 

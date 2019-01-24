@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 
-import { bollywood, hollywood, punjabi } from '../utils/api';
+import { hollywood } from '../utils/api';
 import VideoItem from '../components/VideoItem';
 import Header from '../components/Header';
 // eslint-disable-next-line import/no-unresolved

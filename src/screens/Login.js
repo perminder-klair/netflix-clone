@@ -1,9 +1,8 @@
 import React from 'react';
 import {
-  Switch, View, Text, TextInput, Image
+  TextInput, Image
 } from 'react-native';
 import styled from 'styled-components';
-import theme from '../utils/theme';
 
 const logo = require('../assets/logo.png');
 
@@ -102,7 +101,6 @@ export default class Login extends React.Component {
     const { text, password } = this.state;
     return (
       <Container>
-
         <Header>
           <Logo>
             <Image
