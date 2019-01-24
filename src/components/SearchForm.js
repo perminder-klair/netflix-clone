@@ -8,6 +8,7 @@ const searchIcon = require('../assets/search-icon.png');
 const Container = styled.View` 
  flex-grow:1;
  border-bottom-color: #fff;
+ border-color: transparent;
  border-width: 1;
  flex-direction: row; 
  justify-content: space-between;

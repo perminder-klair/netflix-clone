@@ -125,14 +125,12 @@ class VideoItem extends Component {
             { active && (
             <Overlay active={active}>
               <VideoDetails>
-
                 <Title>
                   {item.Title}
                 </Title>
                 <UploadTime>
                   {item.Year}
                 </UploadTime>
-
               </VideoDetails>
               <VideoStats>
                 <PublicStatsContainer>
@@ -140,9 +138,7 @@ class VideoItem extends Component {
                   <StatText>1 comment</StatText>
                   <StatText>2 views</StatText>
                 </PublicStatsContainer>
-
                 <Time>1h 30min</Time>
-
               </VideoStats>
             </Overlay>
             )}
@@ -166,14 +162,12 @@ class VideoItem extends Component {
           { active && (
           <Overlay active={active}>
             <VideoDetails>
-
               <Title>
                 {item.Title}
               </Title>
               <UploadTime>
                 {item.Year}
               </UploadTime>
-
             </VideoDetails>
             <VideoStats>
               <PublicStatsContainer>
@@ -187,7 +181,6 @@ class VideoItem extends Component {
             </VideoStats>
           </Overlay>
           )}
-
         </ContainerSecondary>
       </TouchableWithoutFeedback>
     );

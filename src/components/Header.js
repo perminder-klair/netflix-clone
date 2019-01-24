@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Image } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import SearchForm from './SearchForm';
 
 const avatar = require('../assets/avatar.png');
@@ -19,6 +20,7 @@ const Container = styled.View`
 `;
 
 const Logo = styled.TouchableOpacity`
+
 `;
 
 const Navigation = styled.View`
@@ -45,7 +47,7 @@ const Profile = styled.TouchableOpacity`
   border-radius: 100;
 `;
 
-export default () => (
+export default props => (
   <Container>
     <Logo>
       <Image
@@ -65,6 +67,7 @@ export default () => (
         <Image
           source={avatar}
           style={{ height: 35, width: 35 }}
+          onPress={() => props.navigation.navigate('Video')}
         />
       </Profile>
     </Right>

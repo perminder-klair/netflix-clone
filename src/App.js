@@ -3,10 +3,13 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import Dashboard from './screens/Dashboard';
 import VideoView from './screens/VideoView';
+import Login from './screens/Login';
 
 const MainStack = createStackNavigator({
   Dashboard: { screen: Dashboard },
   Video: { screen: VideoView },
+  Login: { screen: Login },
+
 });
 
 const App = createAppContainer(MainStack);
