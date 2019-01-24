@@ -15,7 +15,6 @@ const deviceWidth = Dimensions.get('window').width / 3;
 // `;
 
 const Blue = styled.View`
-  
   background-color: blue;
   width: ${deviceWidth};
   height: 100;

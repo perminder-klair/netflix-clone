@@ -9,7 +9,7 @@ const logo = require('../assets/logo.png');
 
 const Container = styled.View`
   width: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0);
   height: 60;
   position: absolute;
   z-index: 999;
@@ -38,7 +38,6 @@ const TextStyled = styled.Text`
   color: ${props => props.theme.textColor};
 `;
 
-const Right = styled.View``;
 
 const Profile = styled.TouchableOpacity`
   margin-horizontal: 15;
@@ -47,7 +46,7 @@ const Profile = styled.TouchableOpacity`
   border-radius: 100;
 `;
 
-export default props => (
+const Header = props => (
   <Container>
     <Logo>
       <Image
@@ -56,20 +55,23 @@ export default props => (
       />
     </Logo>
     <Navigation>
-      <NavItem><TextStyled>Home</TextStyled></NavItem>
+      <NavItem onPress={() => props.navigation.navigate('Dashboard')}>
+        <TextStyled>Home</TextStyled>
+      </NavItem>
       <NavItem><TextStyled>Videos</TextStyled></NavItem>
       <NavItem><TextStyled>Series</TextStyled></NavItem>
       <NavItem><TextStyled>Live TV</TextStyled></NavItem>
     </Navigation>
     <SearchForm />
-    <Right>
-      <Profile>
-        <Image
-          source={avatar}
-          style={{ height: 35, width: 35 }}
-          onPress={() => props.navigation.navigate('Video')}
-        />
-      </Profile>
-    </Right>
+
+    <Profile onPress={() => props.navigation.navigate('Login')}>
+      <Image
+        source={avatar}
+        style={{ height: 35, width: 35 }}
+      />
+    </Profile>
+
   </Container>
 );
+
+export default withNavigation(Header);

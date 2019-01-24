@@ -7,18 +7,20 @@ import { withNavigation } from 'react-navigation';
 
 
 const deviceWidth = Dimensions.get('window').width / 3.2;
+const deviceWidthByFive = Dimensions.get('window').width / 5.2;
+const deviceWidthByThree = Dimensions.get('window').width / 3;
 
 const Container = styled.View`
   background-color: ${props => (props.active ? '#fff' : 'transparent')};
-  width: ${props => (props.active ? '300' : '180')};
+  width: ${props => (props.active ? deviceWidthByThree : deviceWidthByFive)};
   height: ${props => (props.active ? '200' : '100')};
   margin-vertical: 8;
   margin-horizontal: 2;
 `;
 
 const ImageStyled = styled(Image)`
-  width: ${props => (props.active ? '300' : '180')};
-  height: ${props => (props.active ? '200' : '100')};
+  width: ${props => (props.active ? '100%' : '100%')};
+  height: ${props => (props.active ? '100%' : '100%')};
 `;
 
 const Overlay = styled.View`
@@ -60,8 +62,8 @@ const VideoStats = styled.View`
   width: 100%;
   padding-horizontal: 10;
 `;
-const PublicStatsContainer = styled.View`
 
+const PublicStatsContainer = styled.View`
 flex-direction: row;
 flex-grow: 1;
 align-items: center;
