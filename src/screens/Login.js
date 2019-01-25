@@ -9,8 +9,8 @@ const logo = require('../assets/logo.png');
 const Container = styled.View`
   background-color: ${props => props.theme.primaryColor};
   height: 100%;
-
 `;
+
 const Header = styled.View`
   width: 100%;
   padding-horizontal: 35;
@@ -18,7 +18,6 @@ const Header = styled.View`
 `;
 
 const Logo = styled.TouchableOpacity`
-
 `;
 
 const LogInWrapper = styled.View`
@@ -37,7 +36,7 @@ const LogInBox = styled.View`
 `;
 
 const LogInTitle = styled.Text`
-  color: #FFF;
+  color: ${props => props.theme.textColor};
   font-size: 22;
   margin-bottom: 30;
 `;
@@ -51,7 +50,7 @@ const TextInputStyled = styled(TextInput)`
   font-size: 12;
 `;
 const Button = styled.TouchableOpacity`
-  color: #fff;
+ color: ${props => props.theme.textColor};
   background-color: #000;
   width: 100%;
   height: 50;
@@ -64,7 +63,7 @@ const ButtonTextStyled = styled.Text`
   color: ${props => props.theme.textColor};
 `;
 const NeedHelp = styled.Text`
-  color: #fff;
+ color: ${props => props.theme.textColor};
   margin-top: 5;
   margin-bottom: 25;
   font-size: 10;
@@ -79,7 +78,10 @@ const SignUpTitle = styled.Text`
   margin-right: 5;
 `;
 
-const SignUpText = styled.Text`
+const SignUpWrapper = styled.TouchableOpacity`
+`;
+
+const SignUpTextStyled = styled.Text`
   color:#fff;
   font-size: 10;
 `;
@@ -134,7 +136,7 @@ export default class Login extends React.Component {
             <NeedHelp>Need Help?</NeedHelp>
             <SignUp>
               <SignUpTitle>Don't have an account?</SignUpTitle>
-              <SignUpText>Sign Up here.</SignUpText>
+              <SignUpWrapper><SignUpTextStyled>Sign Up here.</SignUpTextStyled></SignUpWrapper>
             </SignUp>
           </LogInBox>
         </LogInWrapper>

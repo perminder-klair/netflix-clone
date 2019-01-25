@@ -16,11 +16,3 @@ const MainStack = createStackNavigator({
 
 const App = createAppContainer(MainStack);
 export default App;
-
-// class App extends Component {
-//   render() {
-//     return <MainStack />;
-//   }
-// }
-
-// export default App;

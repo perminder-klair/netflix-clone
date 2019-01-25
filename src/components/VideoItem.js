@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import {
-  TouchableWithoutFeedback, Image, Dimensions
+  TouchableWithoutFeedback, Image
 } from 'react-native';
 import styled from 'styled-components/native';
 import { withNavigation } from 'react-navigation';
 
-
-const deviceWidth = Dimensions.get('window').width / 3.2;
-const deviceWidthByFive = Dimensions.get('window').width / 5.2;
-const deviceWidthByThree = Dimensions.get('window').width / 3;
-
 const Container = styled.View`
   background-color: ${props => (props.active ? '#fff' : 'transparent')};
-  width: ${props => (props.active ? deviceWidthByThree : deviceWidthByFive)};
-  height: ${props => (props.active ? '200' : '100')};
+  width: ${props => (props.active ? props.theme.secondaryWidth : props.theme.primaryWidth)};
+  height: ${props => (props.active ? props.theme.secondaryHeight : props.theme.primaryHeight)};
   margin-vertical: 8;
   margin-horizontal: 2;
 `;
@@ -46,7 +41,7 @@ const VideoDetails = styled.View`
 
 const Title = styled.Text`
   font-size: 22;
-  color: #fff;
+  color: ${props => props.theme.textColor};
   font-weight: bold;
 `;
 
@@ -76,14 +71,14 @@ const StatText = styled.Text`
 `;
 const Time = styled.Text`
   font-size: 16;
-  color: #ffffff;
+  color: ${props => props.theme.textColor};
   `;
 
 const ContainerSecondary = styled.View`
   flex: 1;
   flex-grow: 1;
   background-color: ${props => (props.active ? '#fff' : 'red')};
-  width: ${props => (props.active ? '400' : deviceWidth)};
+  width: ${props => (props.active ? '400' : props.theme.secondaryWidth)};
   height: ${props => (props.active ? '200' : '150')};
   margin-vertical: 8;
   margin-horizontal: 5;
