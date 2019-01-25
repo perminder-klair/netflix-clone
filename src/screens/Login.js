@@ -63,7 +63,7 @@ const ButtonTextStyled = styled.Text`
   color: ${props => props.theme.textColor};
 `;
 const NeedHelp = styled.Text`
- color: ${props => props.theme.textColor};
+  color: ${props => props.theme.textColor};
   margin-top: 5;
   margin-bottom: 25;
   font-size: 10;
@@ -82,7 +82,7 @@ const SignUpWrapper = styled.TouchableOpacity`
 `;
 
 const SignUpTextStyled = styled.Text`
-  color:#fff;
+  color: ${props => props.theme.textColor};
   font-size: 10;
 `;
 export default class Login extends React.Component {

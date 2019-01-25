@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 
 import HeroArea from '../components/HeroArea';
 import { bollywood, hollywood, punjabi } from '../utils/api';
-import VideoItem from '../components/VideoItem';
+import VideoList from '../components/VideoList';
 import Header from '../components/Header';
 // eslint-disable-next-line import/no-unresolved
 const TVEventHandler = require('TVEventHandler');
@@ -14,32 +14,17 @@ const Container = styled.View`
 `;
 
 const Wrapper = styled.View`
-  background-color: ${props => props.theme.primaryColor};
+ 
 `;
 
-const CardsWrapper = styled.View`
+const VideosWrapper = styled.View`
+  background-color: ${props => props.theme.primaryColor};
   margin-top: 10;
   margin-horizontal: 20;
 `;
-
-const Columns = styled.View`
-  display: flex;
-  flex-direction: row;
-  margin-top: 25;
-  margin-bottom: 8;
-  margin-horizontal: 8;
-`;
-
-const HeadingStyled = styled.Text`
-  color: #fff;
-  font-size: 18;
-`;
-
-
 export default class Dashboard extends Component {
   static navigationOptions = {
     header: null
-
   };
 
   componentDidMount() {
@@ -84,34 +69,11 @@ export default class Dashboard extends Component {
         <ScrollView>
           <Header />
           <HeroArea />
-          <Wrapper>
-            <CardsWrapper>
-              <Columns>
-                <HeadingStyled>Recent Videos</HeadingStyled>
-              </Columns>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
-                {hollywood.map(item => (
-                  <VideoItem key={item.imdbID} item={item} />
-                ))}
-              </ScrollView>
-              <Columns>
-                <HeadingStyled>Most Viewed Videos</HeadingStyled>
-              </Columns>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
-                {bollywood.map(item => (
-                  <VideoItem key={item.imdbID} item={item} />
-                ))}
-              </ScrollView>
-              <Columns>
-                <HeadingStyled>Playlists</HeadingStyled>
-              </Columns>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
-                {punjabi.map(item => (
-                  <VideoItem key={item.imdbID} item={item} />
-                ))}
-              </ScrollView>
-            </CardsWrapper>
-          </Wrapper>
+          <VideosWrapper>
+            <VideoList title="Recent Videos" videos={bollywood} />
+            <VideoList title="Most Viewed Videos" videos={hollywood} />
+            <VideoList title="Playlists" videos={punjabi} />
+          </VideosWrapper>
         </ScrollView>
       </Container>
     );
