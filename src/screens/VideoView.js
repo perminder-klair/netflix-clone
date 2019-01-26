@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components/native';
-// import { Image } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 import VideoViewHero from '../components/VideoViewHero';
 import RelatedVideos from '../components/RelatedVideos';
-// import Test from '../components/Test';
-
-// const featuredImage = require('../assets/large-poster.png');
 
 const Container = styled.View`
   background-color: ${props => props.theme.primaryColor};
 `;
-
 class VideoView extends Component {
   static navigationOptions = {
     title: 'Video view',
@@ -29,15 +24,7 @@ class VideoView extends Component {
       <Container>
         <ScrollView>
           <VideoViewHero item={item} />
-          {/*
-        {item.Title}
-
-- (
-        {item.Year}
-)
-*/}
           <RelatedVideos />
-
         </ScrollView>
       </Container>
     );

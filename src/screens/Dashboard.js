@@ -13,10 +13,6 @@ const Container = styled.View`
   background-color: ${props => props.theme.primaryColor};
 `;
 
-const Wrapper = styled.View`
- 
-`;
-
 const VideosWrapper = styled.View`
   background-color: ${props => props.theme.primaryColor};
   margin-top: 10;
