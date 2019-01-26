@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Image, Dimensions, Text, View
+  Image, Dimensions
 } from 'react-native';
 import styled from 'styled-components';
 import ChannelList from '../components/ChannelList';
@@ -53,7 +53,7 @@ class Test extends React.Component {
             <ChannelList />
           </ChannelWrapper>
           <KeyboardWrapper>
-            <Keyboard />
+            <Keyboard isActive />
           </KeyboardWrapper>
         </Left>
       </React.Fragment>

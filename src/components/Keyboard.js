@@ -34,12 +34,16 @@ const KeyStyled = styled.Text`
 
 const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '#', '0', 'X'];
 
-export default () => (
-  <KeyBoard>
-    {keys.map(keyItem => (
-      <KeyWrapper key={keyItem}>
-        <KeyStyled>{keyItem}</KeyStyled>
-      </KeyWrapper>
-    ))}
-  </KeyBoard>
+export default ({ isActive }) => (
+  <React.Fragment>
+    {isActive && (
+    <KeyBoard>
+      {keys.map(keyItem => (
+        <KeyWrapper key={keyItem}>
+          <KeyStyled>{keyItem}</KeyStyled>
+        </KeyWrapper>
+      ))}
+    </KeyBoard>
+    )}
+  </React.Fragment>
 );
