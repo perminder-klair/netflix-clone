@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { ScrollView, Dimensions } from 'react-native';
+import { ScrollView, Dimensions, TVEventHandler } from 'react-native';
 import styled from 'styled-components/native';
 
 import { hollywood } from '../utils/api';
 import VideoItem from '../components/VideoItem';
 import Header from '../components/Header';
 // eslint-disable-next-line import/no-unresolved
-const TVEventHandler = require('TVEventHandler');
 
 const { width, height } = Dimensions.get('window');
 

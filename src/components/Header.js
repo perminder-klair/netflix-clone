@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Image, TouchableHighlight } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import SearchForm from './SearchForm';
+import Button from '../assets/Button';
 
 const avatar = require('../assets/avatar.png');
 const logo = require('../assets/logo.png');
@@ -19,8 +20,6 @@ const Container = styled.View`
   justify-content: space-between;
 `;
 
-const Logo = styled(TouchableHighlight)`
-`;
 
 const Navigation = styled.View`
   flex-grow: 1;
@@ -32,7 +31,7 @@ const NavItem = styled(TouchableHighlight)`
 `;
 
 const TextStyled = styled.Text`
-  font-size: ${props => (props.isFocused ? 40 : 18)};
+  font-size: ${props => (props.onFocusText ? 40 : 18)};
   font-weight: 300;
   color: ${props => props.theme.textColor};
 `;
@@ -46,22 +45,26 @@ const Profile = styled(TouchableHighlight)`
 `;
 
 class Header extends React.Component {
-  state = {
-    isFocusedText: false,
-    isFocusedLogo: false
+  constructor() {
+    super();
+    this.state = {
+      isFocusedText: '',
+      isFocusedLogo: false
+    };
   }
 
-  onFocusText = () => {
-    this.setState({ isFocusedText: true });
+
+  onFocusText = (value) => {
+    this.setState({ isFocusedText: value });
   }
 
   onBlurText = () => {
-    this.setState({ isFocusedText: false });
+    this.setState({ isFocusedText: '' });
   }
 
   onFocusLogo = () => {
     this.setState({ isFocusedLogo: true });
-    console.log(this.state.isFocusedLogo);
+    // console.log(this.state.isFocusedLogo);
   }
 
   onBlurLogo = () => {
@@ -73,25 +76,19 @@ class Header extends React.Component {
     const { isFocusedText, isFocusedLogo } = this.state;
     return (
       <Container>
-        <Logo>
+        <Button type="navItem">
           <Image
             source={logo}
             style={{ height: 250, width: 250, resizeMode: 'contain' }}
           />
-        </Logo>
+        </Button>
         <Navigation>
-          <NavItem onFocus={this.onFocusText} onBlur={this.onBlurText} onPress={() => navigation.navigate('Dashboard')}>
-            <TextStyled isFocusedText={isFocusedText}>Home</TextStyled>
-          </NavItem>
-          <NavItem onFocus={this.onFocusText} onBlur={this.onBlurText}>
-            <TextStyled isFocusedText={isFocusedText}>Videos</TextStyled>
-          </NavItem>
-          <NavItem onFocus={this.onFocusText} onBlur={this.onBlurText}>
-            <TextStyled isFocusedText={isFocusedText}>Series</TextStyled>
-          </NavItem>
-          <NavItem onFocus={this.onFocusText} onBlur={this.onBlurText}>
-            <TextStyled isFocusedText={isFocusedText}>Live TV</TextStyled>
-          </NavItem>
+          <Button type="navItem">
+            <TextStyled>Home</TextStyled>
+          </Button>
+          <Button type="navItem">
+            <TextStyled>dashboard</TextStyled>
+          </Button>
         </Navigation>
         <SearchForm />
         <Profile
@@ -112,3 +109,16 @@ class Header extends React.Component {
 
 
 export default withNavigation(Header);
+
+// <NavItem onFocus={() => this.onFocusText('home')} onBlur={this.onBlurText} onPress={() => navigation.navigate('Dashboard')}>
+// <TextStyled isFocusedText={isFocusedText === 'home'}>Home</TextStyled>
+// </NavItem>
+// <NavItem onFocus={() => this.onFocusText('videos')} onBlur={this.onBlurText}>
+// <TextStyled isFocusedText={isFocusedText === 'videos'}>Videos</TextStyled>
+// </NavItem>
+// <NavItem onFocus={() => this.onFocusText('series')} onBlur={this.onBlurText}>
+// <TextStyled isFocusedText={isFocusedText === 'series'}>Series</TextStyled>
+// </NavItem>
+// <NavItem onFocus={() => this.onFocusText('live-tv')} onBlur={this.onBlurText}>
+// <TextStyled isFocusedText={isFocusedText === 'live-tv'}>Live TV</TextStyled>
+// </NavItem>

@@ -53,6 +53,8 @@ class Test extends React.Component {
             <ChannelList />
           </ChannelWrapper>
           <KeyboardWrapper>
+            {/* Change props to false to hide Keyboard */}
+
             <Keyboard isActive />
           </KeyboardWrapper>
         </Left>
