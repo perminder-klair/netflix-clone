@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Image, TouchableHighlight } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import SearchForm from './SearchForm';
-import Button from '../assets/Button';
+import Button from './elements/Button';
 
 const avatar = require('../assets/avatar.png');
 const logo = require('../assets/logo.png');
@@ -76,7 +76,7 @@ class Header extends React.Component {
     const { isFocusedText, isFocusedLogo } = this.state;
     return (
       <Container>
-        <Button type="navItem">
+        <Button type="logo">
           <Image
             source={logo}
             style={{ height: 250, width: 250, resizeMode: 'contain' }}
@@ -84,10 +84,13 @@ class Header extends React.Component {
         </Button>
         <Navigation>
           <Button type="navItem">
-            <TextStyled>Home</TextStyled>
+            <TextStyled>HOME</TextStyled>
           </Button>
           <Button type="navItem">
-            <TextStyled>dashboard</TextStyled>
+            <TextStyled>MOVIES</TextStyled>
+          </Button>
+          <Button type="navItem">
+            <TextStyled>SERIES</TextStyled>
           </Button>
         </Navigation>
         <SearchForm />

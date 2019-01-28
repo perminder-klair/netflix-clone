@@ -1,24 +1,29 @@
-
-
 import React from 'react';
 import styled from 'styled-components';
-import { TouchableOpacity, TVEventHandler, findNodeHandle } from 'react-native';
+import {
+  Dimensions, TVEventHandler, findNodeHandle
+} from 'react-native';
 
-const Wrapper = styled(TouchableOpacity)`
+const { height } = Dimensions.get('window');
 
+
+const ListItemWrapper = styled.TouchableOpacity`
+  border-color: rgba(255,255,255,0.9);
+  background-color: ${props => (props.isFocused ? 'rgba(255,255,255,0.2)' : 'transparent')};
+  border-width: 3;
+  border-top-width: 0;
+  padding-vertical: ${height / 30};
+  padding-horizontal: 15;
 `;
 
-const NavItem = styled(TouchableOpacity)`
-border-bottom-color:${props => (props.isFocused ? '#fff' : 'transparent')};
-border-width:${props => (props.isFocused ? 2 : 0)};
-`;
-
-const VideoItem = styled(TouchableOpacity)`
-
+const TextStyled = styled.Text`
+  color: ${props => props.theme.textColor};
+  font-weight: 600;
+  font-size: 18;
 `;
 
 
-class Button extends React.Component {
+class ChannelListItem extends React.Component {
   myRef = React.createRef();
 
   nodeHandle = null;
@@ -41,7 +46,6 @@ class Button extends React.Component {
     this.disableTVEventHandler();
   }
 
-
   handleTVRemoteEvent = (cmp, event) => {
     const { eventType, tag } = event;
     if (tag !== this.nodeHandle) {
@@ -57,7 +61,6 @@ class Button extends React.Component {
     }
   }
 
-
   enableTVEventHandler() {
     this.evtHandler = new TVEventHandler();
     this.evtHandler.enable(this, this.handleTVRemoteEvent);
@@ -72,30 +75,16 @@ class Button extends React.Component {
 
   render() {
     const { isFocused } = this.state;
-    const { type, children } = this.props;
-
-    if (type === 'video') {
-      return (
-        <VideoItem ref={this.myRef} isFocused={isFocused}>
-          {children}
-        </VideoItem>
-      );
-    }
-
-    if (type === 'navItem') {
-      return (
-        <NavItem ref={this.myRef} isFocused={isFocused}>
-          {children}
-        </NavItem>
-      );
-    }
+    const { item, index } = this.props;
     return (
-      <Wrapper ref={this.myRef} isFocused={isFocused}>
-        {children}
-      </Wrapper>
+      <ListItemWrapper key={index} ref={this.myRef} isFocused={isFocused}>
+        <TextStyled>
+          {`${index + 1}.  `}
+          {item}
+        </TextStyled>
+      </ListItemWrapper>
     );
   }
 }
 
-
-export default Button;
+export default ChannelListItem;
