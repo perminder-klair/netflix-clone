@@ -73,7 +73,7 @@ class Header extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const { isFocusedText, isFocusedLogo } = this.state;
+    const { isFocusedLogo } = this.state;
     return (
       <Container>
         <Button type="logo">
@@ -112,16 +112,3 @@ class Header extends React.Component {
 
 
 export default withNavigation(Header);
-
-// <NavItem onFocus={() => this.onFocusText('home')} onBlur={this.onBlurText} onPress={() => navigation.navigate('Dashboard')}>
-// <TextStyled isFocusedText={isFocusedText === 'home'}>Home</TextStyled>
-// </NavItem>
-// <NavItem onFocus={() => this.onFocusText('videos')} onBlur={this.onBlurText}>
-// <TextStyled isFocusedText={isFocusedText === 'videos'}>Videos</TextStyled>
-// </NavItem>
-// <NavItem onFocus={() => this.onFocusText('series')} onBlur={this.onBlurText}>
-// <TextStyled isFocusedText={isFocusedText === 'series'}>Series</TextStyled>
-// </NavItem>
-// <NavItem onFocus={() => this.onFocusText('live-tv')} onBlur={this.onBlurText}>
-// <TextStyled isFocusedText={isFocusedText === 'live-tv'}>Live TV</TextStyled>
-// </NavItem>

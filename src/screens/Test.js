@@ -1,12 +1,12 @@
-import React from "react";
-import { Image, Dimensions } from "react-native";
-import styled from "styled-components";
-import ChannelList from "../components/ChannelList";
-import Keyboard from "../components/Keyboard";
+import React from 'react';
+import { Image, Dimensions } from 'react-native';
+import styled from 'styled-components';
+import ChannelList from '../components/ChannelList';
+import Keyboard from '../components/Keyboard';
 
-const featuredImage = require("../assets/large-poster.png");
+const featuredImage = require('../assets/large-poster.png');
 
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 
 const VideoWrapper = styled.View`
   position: absolute;
@@ -38,15 +38,15 @@ class Test extends React.Component {
   };
 
   state = {
-    activeKey: ""
+    activeKey: ''
     // keyBoardVisibility: false
   };
 
-  handleKeyPress = value => {
+  handleKeyPress = (value) => {
     const { activeKey } = this.state;
     this.setState({ activeKey: `${activeKey}${value}` });
     setTimeout(() => {
-      this.setState({ activeKey: "" });
+      this.setState({ activeKey: '' });
     }, 2000);
   };
 
@@ -55,7 +55,7 @@ class Test extends React.Component {
   // };
 
   render() {
-    console.log("This is working!");
+    console.log('This is working!');
     const { activeKey, keyBoardVisibility } = this.state;
     console.log(keyBoardVisibility);
     return (

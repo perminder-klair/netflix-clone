@@ -1,10 +1,8 @@
-import React from "react";
-import { Dimensions, TVEventHandler, findNodeHandle } from "react-native";
-import styled from "styled-components";
-import Button from "./elements/Button";
-import nullthrows from "nullthrows";
+import React from 'react';
+import { Dimensions, TVEventHandler, findNodeHandle } from 'react-native';
+import styled from 'styled-components';
 
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get('window');
 
 const KeyBoardWrapper = styled.View`
   background-color: rgba(0, 0, 0, 0.8);
@@ -34,7 +32,7 @@ const KeyStyled = styled.Text`
   font-weight: 600;
 `;
 
-const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "#", "0", "X"];
+const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '#', '0', 'X'];
 
 export default ({ isActive, handleKeyPress, handleFocus }) => (
   <React.Fragment>
@@ -65,7 +63,7 @@ class Key extends React.Component {
     super(props);
     this.state = {
       isFocused: false,
-      activeKey: ""
+      activeKey: ''
     };
   }
 
@@ -78,8 +76,7 @@ class Key extends React.Component {
     this.disableTVEventHandler();
   }
 
-  onPress = keyItem => {
-    const { activeKey } = this.state;
+  onPress = (keyItem) => {
     const { handleKeyPress } = this.props;
     const newData = `${keyItem}`;
     this.setState({
@@ -94,14 +91,14 @@ class Key extends React.Component {
       return;
     }
 
-    if (eventType === "focus") {
+    if (eventType === 'focus') {
       const { handleFocus } = this.props;
       this.setState({ isFocused: true });
       // const { isFocused } = this.state;
       // handleFocus(true);
     }
 
-    if (eventType === "blur") {
+    if (eventType === 'blur') {
       // const { handleFocus } = this.props;
       this.setState({ isFocused: false });
       // handleFocus(false);

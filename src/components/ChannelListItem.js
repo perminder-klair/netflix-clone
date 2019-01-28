@@ -1,13 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import { Dimensions, TVEventHandler, findNodeHandle } from "react-native";
+import React from 'react';
+import styled from 'styled-components';
+import { Dimensions, TVEventHandler, findNodeHandle } from 'react-native';
 
-const { height } = Dimensions.get("window");
+const { height } = Dimensions.get('window');
 
 const ListItemWrapper = styled.TouchableOpacity`
   border-color: rgba(255, 255, 255, 0.9);
-  background-color: ${props =>
-    props.isFocused ? "rgba(255,255,255,0.2)" : "transparent"};
+  background-color: ${props => (props.isFocused ? 'rgba(255,255,255,0.2)' : 'transparent')};
   border-width: 3;
   border-top-width: 0;
   padding-vertical: ${height / 30};
@@ -49,11 +48,11 @@ class ChannelListItem extends React.Component {
       return;
     }
 
-    if (eventType === "focus") {
+    if (eventType === 'focus') {
       this.setState({ isFocused: true });
     }
 
-    if (eventType === "blur") {
+    if (eventType === 'blur') {
       this.setState({ isFocused: false });
     }
   };
