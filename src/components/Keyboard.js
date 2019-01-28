@@ -1,17 +1,18 @@
-import React from 'react';
-import { Dimensions, TVEventHandler, findNodeHandle } from 'react-native';
-import styled from 'styled-components';
-import Button from './elements/Button';
+import React from "react";
+import { Dimensions, TVEventHandler, findNodeHandle } from "react-native";
+import styled from "styled-components";
+import Button from "./elements/Button";
+import nullthrows from "nullthrows";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
-const KeyBoard = styled.View`
-  background-color: rgba(0,0,0,0.8);
+const KeyBoardWrapper = styled.View`
+  background-color: rgba(0, 0, 0, 0.8);
   height: ${height / 2};
   width: ${width / 4};
   border-radius: 10;
   border-width: 3;
-  border-color: rgba(255,255,255,0.8);
+  border-color: rgba(255, 255, 255, 0.8);
   flex-direction: row;
   flex-wrap: wrap;
   margin-left: 10;
@@ -33,18 +34,22 @@ const KeyStyled = styled.Text`
   font-weight: 600;
 `;
 
+const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "#", "0", "X"];
 
-const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '#', '0', 'X'];
-
-
-export default ({ isActive }) => (
+export default ({ isActive, handleKeyPress, handleFocus }) => (
   <React.Fragment>
     {isActive && (
-    <Button type="keyboard">
-      {keys.map((keyItem, index) => (
-        <Key keyItem={keyItem} key={keyItem} index={index} />
-      ))}
-    </Button>
+      <KeyBoardWrapper type="keyboard">
+        {keys.map((keyItem, index) => (
+          <Key
+            keyItem={keyItem}
+            key={keyItem}
+            index={index}
+            handleKeyPress={handleKeyPress}
+            // handleFocus={handleFocus}
+          />
+        ))}
+      </KeyBoardWrapper>
     )}
   </React.Fragment>
 );
@@ -56,10 +61,11 @@ class Key extends React.Component {
 
   evtHandler = null;
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      isFocused: false
+      isFocused: false,
+      activeKey: ""
     };
   }
 
@@ -72,21 +78,35 @@ class Key extends React.Component {
     this.disableTVEventHandler();
   }
 
+  onPress = keyItem => {
+    const { activeKey } = this.state;
+    const { handleKeyPress } = this.props;
+    const newData = `${keyItem}`;
+    this.setState({
+      activeKey: newData
+    });
+    handleKeyPress(newData);
+  };
+
   handleTVRemoteEvent = (cmp, event) => {
     const { eventType, tag } = event;
     if (tag !== this.nodeHandle) {
       return;
     }
 
-    if (eventType === 'focus') {
+    if (eventType === "focus") {
+      const { handleFocus } = this.props;
       this.setState({ isFocused: true });
+      // const { isFocused } = this.state;
+      // handleFocus(true);
     }
 
-    if (eventType === 'blur') {
+    if (eventType === "blur") {
+      // const { handleFocus } = this.props;
       this.setState({ isFocused: false });
+      // handleFocus(false);
     }
-  }
-
+  };
 
   enableTVEventHandler() {
     this.evtHandler = new TVEventHandler();
@@ -104,7 +124,12 @@ class Key extends React.Component {
     const { isFocused } = this.state;
     const { keyItem, index } = this.props;
     return (
-      <KeyWrapper key={index} isFocused={isFocused} ref={this.myRef}>
+      <KeyWrapper
+        key={index}
+        isFocused={isFocused}
+        ref={this.myRef}
+        onPress={() => this.onPress(keyItem)}
+      >
         <KeyStyled>{keyItem}</KeyStyled>
       </KeyWrapper>
     );
