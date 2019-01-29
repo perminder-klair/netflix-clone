@@ -55,9 +55,7 @@ class Test extends React.Component {
   // };
 
   render() {
-    console.log('This is working!');
     const { activeKey, keyBoardVisibility } = this.state;
-    console.log(keyBoardVisibility);
     return (
       <React.Fragment>
         <VideoWrapper>
