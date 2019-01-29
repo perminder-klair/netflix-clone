@@ -28,10 +28,20 @@ const KeyboardWrapper = styled(TouchableOpacity)`
 
 const NavItem = styled(TouchableOpacity)`
   border-color: transparent;
+  font-weight: 800;
   border-bottom-color:${props => (props.isFocused ? '#fff' : 'transparent')};
-  border-width:${props => (props.isFocused ? 2 : 0)};
+  border-width: 2 ;
   margin-right: 15;
 `;
+
+
+const Profile = styled(TouchableOpacity)`
+  margin-horizontal: 15;
+  border-color: #fff;
+  border-width: ${props => (props.isFocused ? '5' : '2')};;
+  border-radius: 100;
+`;
+
 
 const VideoItem = styled(TouchableOpacity)`
 `;
@@ -120,6 +130,14 @@ class FocusableElement extends React.Component {
         <NavItem ref={this.myRef} isFocused={isFocused}>
           {children}
         </NavItem>
+      );
+    }
+
+    if (type === 'profileLogo') {
+      return (
+        <Profile ref={this.myRef} isFocused={isFocused}>
+          {children}
+        </Profile>
       );
     }
     return (

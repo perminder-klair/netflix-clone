@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Image, TouchableHighlight } from 'react-native';
+import { Image, View, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import SearchForm from './SearchForm';
 import FocusableElement from './elements/FocusableElement';
@@ -26,9 +26,6 @@ const Navigation = styled.View`
   flex-direction: row;
 `;
 
-const NavItem = styled(TouchableHighlight)`
-  margin-horizontal: 10;
-`;
 
 const TextStyled = styled.Text`
   font-size: ${props => (props.onFocusText ? 40 : 18)};
@@ -37,45 +34,27 @@ const TextStyled = styled.Text`
 `;
 
 
-const Profile = styled(TouchableHighlight)`
-  margin-horizontal: 15;
-  border-color: #fff;
-  border-width: 2;
-  border-radius: 100;
-`;
-
 class Header extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isFocusedLogo: false
-    };
-  }
+  state={
 
-
-  onFocusLogo = () => {
-    this.setState({ isFocusedLogo: true });
-    // console.log(this.state.isFocusedLogo);
-  }
-
-  onBlurLogo = () => {
-    this.setState({ isFocusedLogo: false });
   }
 
   render() {
     const { navigation } = this.props;
-    const { isFocusedLogo } = this.state;
+
     return (
       <Container>
-        <FocusableElement type="logo">
+        <View>
           <Image
             source={logo}
             style={{ height: 250, width: 250, resizeMode: 'contain' }}
           />
-        </FocusableElement>
+        </View>
         <Navigation>
           <FocusableElement type="navItem">
-            <TextStyled>HOME</TextStyled>
+            <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+              <TextStyled>HOME</TextStyled>
+            </TouchableOpacity>
           </FocusableElement>
           <FocusableElement type="navItem">
             <TextStyled>MOVIES</TextStyled>
@@ -83,22 +62,28 @@ class Header extends React.Component {
           <FocusableElement type="navItem">
             <TextStyled>SERIES</TextStyled>
           </FocusableElement>
+
           <FocusableElement type="navItem">
-            <TextStyled>Test</TextStyled>
+            <TouchableOpacity onPress={() => navigation.navigate('Test')}>
+              <TextStyled>TEST</TextStyled>
+            </TouchableOpacity>
           </FocusableElement>
+
         </Navigation>
+
         <SearchForm />
-        <Profile
+
+        <FocusableElement
           onPress={() => navigation.navigate('Login')}
-          onFocus={this.onFocusLogo}
-          onBlur={this.onBlurText}
-          hasTVPreferredFocus
+          type="profileLogo"
         >
-          <Image
-            source={avatar}
-            style={isFocusedLogo ? { height: 50, width: 50 } : { height: 35, width: 35 }}
-          />
-        </Profile>
+          <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+            <Image
+              source={avatar}
+              style={{ height: 35, width: 35 }}
+            />
+          </TouchableOpacity>
+        </FocusableElement>
       </Container>
     );
   }
