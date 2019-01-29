@@ -8,11 +8,11 @@ import Search from './screens/Search';
 import Test from './screens/Test';
 
 const MainStack = createStackNavigator({
-  Test: { screen: Test },
-  Search: { screen: Search },
   Dashboard: { screen: Dashboard },
   Video: { screen: VideoView },
   Login: { screen: Login },
+  Test: { screen: Test },
+  Search: { screen: Search },
 });
 
 const App = createAppContainer(MainStack);

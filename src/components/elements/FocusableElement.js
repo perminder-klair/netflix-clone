@@ -37,7 +37,7 @@ const VideoItem = styled(TouchableOpacity)`
 `;
 
 
-class Button extends React.Component {
+class FocusableElement extends React.Component {
   myRef = React.createRef();
 
   nodeHandle = null;
@@ -131,4 +131,4 @@ class Button extends React.Component {
 }
 
 
-export default Button;
+export default FocusableElement;

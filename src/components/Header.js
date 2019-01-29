@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Image, TouchableHighlight } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import SearchForm from './SearchForm';
-import Button from './elements/Button';
+import FocusableElement from './elements/FocusableElement';
 
 const avatar = require('../assets/avatar.png');
 const logo = require('../assets/logo.png');
@@ -48,19 +48,10 @@ class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      isFocusedText: '',
       isFocusedLogo: false
     };
   }
 
-
-  onFocusText = (value) => {
-    this.setState({ isFocusedText: value });
-  }
-
-  onBlurText = () => {
-    this.setState({ isFocusedText: '' });
-  }
 
   onFocusLogo = () => {
     this.setState({ isFocusedLogo: true });
@@ -76,22 +67,25 @@ class Header extends React.Component {
     const { isFocusedLogo } = this.state;
     return (
       <Container>
-        <Button type="logo">
+        <FocusableElement type="logo">
           <Image
             source={logo}
             style={{ height: 250, width: 250, resizeMode: 'contain' }}
           />
-        </Button>
+        </FocusableElement>
         <Navigation>
-          <Button type="navItem">
+          <FocusableElement type="navItem">
             <TextStyled>HOME</TextStyled>
-          </Button>
-          <Button type="navItem">
+          </FocusableElement>
+          <FocusableElement type="navItem">
             <TextStyled>MOVIES</TextStyled>
-          </Button>
-          <Button type="navItem">
+          </FocusableElement>
+          <FocusableElement type="navItem">
             <TextStyled>SERIES</TextStyled>
-          </Button>
+          </FocusableElement>
+          <FocusableElement type="navItem">
+            <TextStyled>Test</TextStyled>
+          </FocusableElement>
         </Navigation>
         <SearchForm />
         <Profile
